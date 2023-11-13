@@ -9,26 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("1")
-            Text("2")
-            Text("3")
-                .background(.white)
-            Text("1")
-            Text("2")
-            Text("3")
-                .background(.white)
-            Text("1")
-            Text("2")
-            Text("3")
-                .background(.white)
-            Text("1")
-            Text("2")
-            Text("3")
-                .background(.white)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                Text("1")
+                    .frame(width: 300, height: 500)
+                    .background(.red)
+                Text("2")
+                    .frame(width: 300, height: 500)
+                    .background(.blue)
+                Text("3")
+                    .frame(width: 300, height: 500)
+                    .background(.orange)
+
+            }
         }
-        .frame(width: 300, height: 200, alignment: .leading)
-        .background(.orange)
+        .background(.yellow)
     }
 }
 
