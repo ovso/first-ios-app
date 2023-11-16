@@ -15,32 +15,58 @@ struct Person: Identifiable {
 struct ContentView: View {
     var body: some View {
         
-        let persons: [Person] = [
-            Person(name: "jaeho", imageName: "heart"),
-            Person(name: "jaeho2", imageName: "heart.fill"),
-            Person(name: "jaeho3", imageName: "bolt")
-        ]
-        
-        List(persons) { person in
-            HStack {
-                Image(systemName: person.imageName)
-                Text(person.name)
+        List {
+            Section {
+                HStack {
+                    Image(systemName: "heart")
+                    Text("jaeho")
+                }
+                HStack {
+                    Image(systemName: "heart.fill")
+                    Text("Dodo")
+                }
+                HStack {
+                    Image(systemName: "bolt")
+                    Text("Olivia")
+                }
+            } header: {
+                Text("A Class")
+            }
+            Section {
+                HStack {
+                    Image(systemName: "heart")
+                    Text("jaeho")
+                }
+                HStack {
+                    Image(systemName: "heart.fill")
+                    Text("Dodo")
+                }
+                HStack {
+                    Image(systemName: "bolt")
+                    Text("Olivia")
+                }
+            } header: {
+                Text("B Class")
+            }
+            Section {
+                HStack {
+                    Image(systemName: "heart")
+                    Text("jaeho")
+                }
+                HStack {
+                    Image(systemName: "heart.fill")
+                    Text("Dodo")
+                }
+                HStack {
+                    Image(systemName: "bolt")
+                    Text("Olivia")
+                }
+            } header: {
+                Text("A Class")
+            } footer: {
+                Text("copy right by jaeho and 피터")
             }
         }
-//        List {
-//            HStack {
-//                Image(systemName: "heart")
-//                Text("jaeho")
-//            }
-//            HStack {
-//                Image(systemName: "heart.fill")
-//                Text("Dodo")
-//            }
-//            HStack {
-//                Image(systemName: "bolt")
-//                Text("Olivia")
-//            }
-//        }
     }
 }
 
