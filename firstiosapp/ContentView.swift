@@ -7,68 +7,29 @@
 
 import SwiftUI
 
-struct Person: Identifiable {
-    var id = UUID()
-    let name: String
-    let imageName: String
-}
+
 struct ContentView: View {
+
     var body: some View {
-        
-        List {
-            Section {
-                HStack {
-                    Image(systemName: "heart")
-                    Text("jaeho")
-                }
-                HStack {
-                    Image(systemName: "heart.fill")
-                    Text("Dodo")
-                }
-                HStack {
-                    Image(systemName: "bolt")
-                    Text("Olivia")
-                }
-            } header: {
-                Text("A Class")
-            }
-            Section {
-                HStack {
-                    Image(systemName: "heart")
-                    Text("jaeho")
-                }
-                HStack {
-                    Image(systemName: "heart.fill")
-                    Text("Dodo")
-                }
-                HStack {
-                    Image(systemName: "bolt")
-                    Text("Olivia")
-                }
-            } header: {
-                Text("B Class")
-            }
-            Section {
-                HStack {
-                    Image(systemName: "heart")
-                    Text("jaeho")
-                }
-                HStack {
-                    Image(systemName: "heart.fill")
-                    Text("Dodo")
-                }
-                HStack {
-                    Image(systemName: "bolt")
-                    Text("Olivia")
-                }
-            } header: {
-                Text("A Class")
-            } footer: {
-                Text("copy right by jaeho and 피터")
-            }
+        VStack {
+            Image(systemName: "bolt")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100)
+                .padding([.bottom, .top], 100)
+                .background(.green)
+                .foregroundColor(.red)
+            Image(systemName: "bolt")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100)
+                .padding(.leading, 100)
+                .background(.green)
+                .foregroundColor(.red)
         }
     }
 }
+
 
 #Preview {
     ContentView()
