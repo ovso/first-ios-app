@@ -11,22 +11,11 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        VStack {
-            Image(systemName: "bolt")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100)
-                .padding([.bottom, .top], 100)
-                .background(.green)
-                .foregroundColor(.red)
-            Image(systemName: "bolt")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100)
-                .padding(.leading, 100)
-                .background(.green)
-                .foregroundColor(.red)
-        }
+        Image(systemName: "bolt")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 300, height: 200)
+            .background(.green)
     }
 }
 
