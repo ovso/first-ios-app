@@ -9,30 +9,84 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State var menu: String? = "오늘 뭐먹지?"
-    let menus: [Food] = [.bulgogi, .tangsuyook, .sushi, .pho]
-    
-    enum Food: String {
-        case bulgogi = "불고기"
-        case tangsuyook = "탕수육"
-        case sushi = "스시"
-        case pho = "쌀국수"
-    }
-    
     var body: some View {
-        VStack {
-            if menu == "불고기" || menu == "스시" {
-                Text("너무 맛있는 \(menu!)")
-            } else {
-                Text(menu!)
-            }
-            
-            Button(action: {
-                menu = menus.randomElement()?.rawValue
-            }, label: {
-                Text("눌러요!")
-            })
-        }
+
+            Text("설정")
+            NavigationView {
+                List {
+                    Section {
+                        Text("Jaeho")
+                    }
+
+                    Section {
+                        HStack {
+                            Image(systemName: "hourglass")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(.all, 4)
+                                .background(.indigo)
+                                .foregroundColor(.white)
+                                .cornerRadius(6)
+                            
+                            NavigationLink("스크린타임") {
+                                Text("스크린 타임 화면")
+                            }
+                        }
+                        
+                    }
+                    Section {
+                        HStack {
+                            Image(systemName: "hourglass")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(.all, 4)
+                                .background(.indigo)
+                                .foregroundColor(.white)
+                                .cornerRadius(6)
+                            
+                            NavigationLink("일반") {
+                                Text("일반 화면")
+                            }
+
+                        }
+                        
+                        HStack {
+                            Image(systemName: "hourglass")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(.all, 4)
+                                .background(.indigo)
+                                .foregroundColor(.white)
+                                .cornerRadius(6)
+                            
+                            NavigationLink("손쉬운 사용") {
+                                Text("손쉬운 사용 화면")
+                            }
+
+                        }
+                        
+                        HStack {
+                            Image(systemName: "hourglass")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(.all, 4)
+                                .background(.indigo)
+                                .foregroundColor(.white)
+                                .cornerRadius(6)
+                            
+                            NavigationLink("개인 정보 보호") {
+                                Text("개인 정보 보호 화면")
+                            }
+
+                        }
+
+                    }
+                }
+            }.navigationTitle(Text("설정"))
     }
 }
 
