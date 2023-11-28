@@ -20,7 +20,7 @@ struct ContentView: View {
 
                     Section {
                         HStack {
-                            Image(systemName: "hourglass")
+                            Image(systemName: "airplane")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
@@ -29,12 +29,40 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(6)
                             
-                            NavigationLink("스크린타임") {
-                                Text("스크린 타임 화면")
+                            NavigationLink("에어플레인모드") {
+                                Text("에어 플레인 모드")
                             }
                         }
-                        
+                        HStack {
+                            Image(systemName: "wifi")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(.all, 4)
+                                .background(.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(6)
+                            
+                            NavigationLink("WI-FI") {
+                                Text("WI-FI")
+                            }
+                        }
+                        HStack {
+                            Image(systemName: "apple.terminal")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(.all, 4)
+                                .background(.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(6)
+                            
+                            NavigationLink("Bluetooth") {
+                                Text("Bluetooth")
+                            }
+                        }
                     }
+
                     Section {
                         HStack {
                             Image(systemName: "hourglass")
@@ -46,19 +74,35 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(6)
                             
-                            NavigationLink("일반") {
-                                Text("일반 화면")
+                            NavigationLink("스크린타임") {
+                                Text("스크린 타임")
                             }
-
                         }
-                        
+                    }
+                    
+                    Section {
                         HStack {
-                            Image(systemName: "hourglass")
+                            Image(systemName: "paperplane.circle.fill")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .padding(.all, 4)
-                                .background(.indigo)
+                                .background(.gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(6)
+                            
+                            NavigationLink("일반") {
+                                Text("일반 화면")
+                            }
+                        }
+                        
+                        HStack {
+                            Image(systemName: "computermouse.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(.all, 4)
+                                .background(.green)
                                 .foregroundColor(.white)
                                 .cornerRadius(6)
                             
@@ -69,7 +113,7 @@ struct ContentView: View {
                         }
                         
                         HStack {
-                            Image(systemName: "hourglass")
+                            Image(systemName: "hand.raised.fill")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
@@ -83,7 +127,24 @@ struct ContentView: View {
                             }
 
                         }
+                    }
+                    
+                    Section {
+                        HStack {
+                            Image(systemName: "key.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(.all, 4)
+                                .background(.gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(6)
+                            
+                            NavigationLink("암호") {
+                                Text("암호")
+                            }
 
+                        }
                     }
                 }
             }.navigationTitle(Text("설정"))
