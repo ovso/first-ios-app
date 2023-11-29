@@ -9,6 +9,8 @@ import SwiftUI
 
 
 struct ContentView: View {
+    @State private var isAirplainModeOn = false
+    
     var body: some View {
 
             Text("설정")
@@ -51,9 +53,7 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(6)
                             
-                            NavigationLink("에어플레인모드") {
-                                Text("에어 플레인 모드")
-                            }
+                            Toggle("에어플레인 모드", isOn: $isAirplainModeOn)
                         }
                         HStack {
                             Image(systemName: "wifi")
@@ -64,10 +64,18 @@ struct ContentView: View {
                                 .background(.blue)
                                 .foregroundColor(.white)
                                 .cornerRadius(6)
-                            
-                            NavigationLink("WI-FI") {
+                            NavigationLink {
                                 Text("WI-FI")
+                            } label: {
+                                HStack {
+                                    Text("WI-FI")
+                                    Spacer()
+                                    Text("SK_WiFiGIGAAD9BC_5G")
+                                        .foregroundColor(.gray)
+                                }
+                                
                             }
+
                         }
                         HStack {
                             Image(systemName: "apple.terminal")
@@ -78,11 +86,20 @@ struct ContentView: View {
                                 .background(.blue)
                                 .foregroundColor(.white)
                                 .cornerRadius(6)
-                            
-                            NavigationLink("Bluetooth") {
+                            NavigationLink {
                                 Text("Bluetooth")
+                            } label: {
+                                HStack {
+                                    Text("Bluetooth")
+                                    Spacer()
+                                    Text("켬")
+                                        .foregroundColor(.gray)
+                                }
+                                
                             }
+
                         }
+
                     }
 
                     Section {
