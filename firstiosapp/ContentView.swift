@@ -26,44 +26,57 @@ struct ContentView: View {
 
                     Section {
                         airPlainToggleCell()
-                        wifiTextCell()
-                        palinCell(
+                        
+                        plainCell(
+                            imageName: "wifi",
+                            iconBackgroundColor: .blue,
+                            cellTitle: "Wi-Fi",
+                            subTitle: "SK_WIFIGIGAAD9BC") {
+                                Text("Wi-Fi 화면")
+                            }
+
+                        plainCell(
                             imageName: "antenna.radiowaves.left.and.right",
                             iconBackgroundColor: .yellow,
-                            cellTitle: "셀룰러 화면" ) {
-                                Text("셀룰러")
-                        }
+                            cellTitle: "셀룰러 화면",
+                            subTitle: nil ) {
+                                Text("셀룰러 화면")
+                            }
                     }
 
                     Section {
-                        palinCell(
+                        plainCell(
                             imageName: "hourglass",
                             iconBackgroundColor: .indigo,
-                            cellTitle: "스크린 타임") {
+                            cellTitle: "스크린 타임",
+                            subTitle: nil ) {
                                 Text("스크린 타임")
-                        }
+                            }
                     }
                     
                     Section {
-                        
-                        palinCell(
-                            imageName: "paperplane.circle.fill",
-                            iconBackgroundColor: .gray,
-                            cellTitle: "일반 화면") {
-                                Text("일반")
-                        }
 
-                        palinCell(
+                        plainCell(
+                            imageName: "computermouse.fill",
+                            iconBackgroundColor: .gray,
+                            cellTitle: "일반",
+                            subTitle: nil ) {
+                                Text("일반 화면")
+                            }
+                        
+                        plainCell(
                             imageName: "computermouse.fill",
                             iconBackgroundColor: .blue,
-                            cellTitle: "손쉬운 사용 화면") {
-                                Text("손쉬운 사용")
-                        }
+                            cellTitle: "손쉬운 사용",
+                            subTitle: nil ) {
+                                Text("손쉬운 사용 화면")
+                            }
                         
-                        palinCell(
+                        plainCell(
                             imageName: "hand.raised.fill",
                             iconBackgroundColor: .blue,
-                            cellTitle: "개인 정보 보호 화면") {
+                            cellTitle: "개인 정보 보호 화면",
+                            subTitle: nil) {
                                 Text("개인 정보 보호")
                         }
                                             
@@ -71,11 +84,12 @@ struct ContentView: View {
                     
                     Section {
                         
-                        palinCell(
+                        plainCell(
                             imageName: "key.fill",
                             iconBackgroundColor: .gray,
-                            cellTitle: "암호 화면") {
-                                Text("암호")
+                            cellTitle: "암호",
+                            subTitle: nil ) {
+                                Text("암호  화면")
                         }
 
                     }
@@ -120,39 +134,14 @@ struct ContentView: View {
             Toggle("에어플레인 모드", isOn: $isAirplainModeOn)
         }
     }
+
     
     @ViewBuilder
-    private func wifiTextCell() -> some View {
-        HStack {
-            Image(systemName: "wifi")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 20, height: 20)
-                .padding(.all, 4)
-                .background(.blue)
-                .foregroundColor(.white)
-                .cornerRadius(6)
-            NavigationLink {
-                Text("WI-FI")
-            } label: {
-                HStack {
-                    Text("WI-FI")
-                    Spacer()
-                    Text("SK_WiFiGIGAAD9BC_5G")
-                        .foregroundColor(.gray)
-                }
-                
-            }
-
-        }
-
-    }
-    
-    @ViewBuilder
-    private func palinCell<V: View>(
+    private func plainCell<V: View>(
         imageName: String,
         iconBackgroundColor: Color,
         cellTitle: String,
+        subTitle: String?,
         destination: @escaping() -> V
     ) -> some View {
         HStack {
@@ -164,11 +153,24 @@ struct ContentView: View {
                 .background(iconBackgroundColor)
                 .foregroundColor(.white)
                 .cornerRadius(6)
-            NavigationLink {
-                Text(cellTitle)
-            } label: {
-                destination()
+            
+            if let subTitle = subTitle {
+                NavigationLink {
+                    destination()
+                } label: {
+                    HStack {
+                        Text(cellTitle)
+                        Spacer()
+                        Text(subTitle)
+                            .foregroundColor(.gray)
+                    }
+                }
+            } else {
+                NavigationLink(cellTitle) {
+                    destination()
+                }
             }
+            
 
         }
     }
