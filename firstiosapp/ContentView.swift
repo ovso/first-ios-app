@@ -25,29 +25,33 @@ struct ContentView: View {
                     }
 
                     Section {
-                        airPlainToggleCell()
-                        
-                        plainCell(
+                        toggleCell(
+                            imageName: "airplane",
+                            iconColor: .yellow,
+                            cellTitle: "에어플레인 모드",
+                            isAirplainModeOn: $isAirplainModeOn
+                        )
+                        navigationLinkcell(
                             imageName: "wifi",
-                            iconBackgroundColor: .blue,
+                            iconColor: .blue,
                             cellTitle: "Wi-Fi",
                             subTitle: "SK_WIFIGIGAAD9BC") {
                                 Text("Wi-Fi 화면")
                             }
 
-                        plainCell(
+                        navigationLinkcell(
                             imageName: "antenna.radiowaves.left.and.right",
-                            iconBackgroundColor: .yellow,
-                            cellTitle: "셀룰러 화면",
+                            iconColor: .yellow,
+                            cellTitle: "셀룰러",
                             subTitle: nil ) {
                                 Text("셀룰러 화면")
                             }
                     }
 
                     Section {
-                        plainCell(
+                        navigationLinkcell(
                             imageName: "hourglass",
-                            iconBackgroundColor: .indigo,
+                            iconColor: .indigo,
                             cellTitle: "스크린 타임",
                             subTitle: nil ) {
                                 Text("스크린 타임")
@@ -56,25 +60,25 @@ struct ContentView: View {
                     
                     Section {
 
-                        plainCell(
+                        navigationLinkcell(
                             imageName: "computermouse.fill",
-                            iconBackgroundColor: .gray,
+                            iconColor: .gray,
                             cellTitle: "일반",
                             subTitle: nil ) {
                                 Text("일반 화면")
                             }
                         
-                        plainCell(
+                        navigationLinkcell(
                             imageName: "computermouse.fill",
-                            iconBackgroundColor: .blue,
+                            iconColor: .blue,
                             cellTitle: "손쉬운 사용",
                             subTitle: nil ) {
                                 Text("손쉬운 사용 화면")
                             }
                         
-                        plainCell(
+                        navigationLinkcell(
                             imageName: "hand.raised.fill",
-                            iconBackgroundColor: .blue,
+                            iconColor: .blue,
                             cellTitle: "개인 정보 보호 화면",
                             subTitle: nil) {
                                 Text("개인 정보 보호")
@@ -84,9 +88,9 @@ struct ContentView: View {
                     
                     Section {
                         
-                        plainCell(
+                        navigationLinkcell(
                             imageName: "key.fill",
-                            iconBackgroundColor: .gray,
+                            iconColor: .gray,
                             cellTitle: "암호",
                             subTitle: nil ) {
                                 Text("암호  화면")
@@ -118,62 +122,63 @@ struct ContentView: View {
         .padding(.vertical, 10)
 
     }
-    
-    @ViewBuilder
-    private func airPlainToggleCell() -> some View {
-        HStack {
-            Image(systemName: "airplane")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 20, height: 20)
-                .padding(.all, 4)
-                .background(.indigo)
-                .foregroundColor(.white)
-                .cornerRadius(6)
-            
-            Toggle("에어플레인 모드", isOn: $isAirplainModeOn)
-        }
-    }
 
+    @ViewBuilder
+    private func imageIcon(imageName: String, iconColor: Color) -> some View {
+        Image(systemName: imageName)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 20, height: 20)
+            .padding(.all, 4)
+            .background(iconColor)
+            .foregroundColor(.white)
+            .cornerRadius(6)
+    }
     
     @ViewBuilder
-    private func plainCell<V: View>(
+    private func toggleCell(
         imageName: String,
-        iconBackgroundColor: Color,
+        iconColor: Color,
         cellTitle: String,
-        subTitle: String?,
-        destination: @escaping() -> V
-    ) -> some View {
-        HStack {
-            Image(systemName: imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 20, height: 20)
-                .padding(.all, 4)
-                .background(iconBackgroundColor)
-                .foregroundColor(.white)
-                .cornerRadius(6)
+        isAirplainModeOn: Binding<Bool>) -> some View {
+            HStack {
+                imageIcon(imageName: imageName, iconColor: iconColor)
+                Toggle(cellTitle, isOn: $isAirplainModeOn)
+            }
+                
+    }
+    
+    @ViewBuilder
+    private func navigationLinkcell<V: View>(
+        imageName: String,
+        iconColor: Color,
+        cellTitle: String,
+        subTitle: String? = nil,
+        destination: @escaping () -> V) -> some View {
             
-            if let subTitle = subTitle {
-                NavigationLink {
-                    destination()
-                } label: {
-                    HStack {
-                        Text(cellTitle)
-                        Spacer()
-                        Text(subTitle)
-                            .foregroundColor(.gray)
+            HStack {
+                imageIcon(imageName: imageName, iconColor: iconColor)
+                
+                if let subTitle = subTitle {
+                    NavigationLink {
+                        destination()
+                    } label: {
+                        HStack {
+                            Text(cellTitle)
+                            Spacer()
+                            Text(subTitle)
+                                .foregroundColor(.gray)
+                        }
                     }
-                }
-            } else {
-                NavigationLink(cellTitle) {
-                    destination()
+                } else {
+                    NavigationLink(cellTitle) {
+                        destination()
+                    }
                 }
             }
             
-
         }
-    }
+
 
 }
 
